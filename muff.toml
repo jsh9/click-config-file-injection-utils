@@ -1,0 +1,126 @@
+exclude = ["tests/test_data"]
+line-length = 79
+output-format = "grouped"
+target-version = "py310"
+
+[format]
+docstring-code-format = true
+preview = true
+quote-style = "single"
+
+[lint]
+extend-select = [
+  "A",
+  "ANN",
+  "ARG",
+  "ASYNC",
+  "B",
+  "BLE",
+  "C4",
+  "C901",
+  "D",
+  "DTZ",
+  "E",
+  "ERA",
+  "EXE",
+  "F",
+  "FA",
+  "FBT",
+  "FLY",
+  "FURB",
+  "G",
+  "I",
+  "ICN",
+  "INP",
+  "ISC",
+  "LOG",
+  "N",
+  "NPY",
+  "PD",
+  "PERF",
+  "PGH",
+  "PIE",
+  "PL",
+  "PT",
+  "PTH",
+  "PYI",
+  "Q",
+  "RET",
+  "RUF",
+  "S",
+  "SIM",
+  "SLF",
+  "SLOT",
+  "T10",
+  "TC",
+  "TD",
+  "TID",
+  "TRY",
+  "UP",
+  "W",
+]
+ignore = [
+  "ANN401",
+  "D100",
+  "D104",
+  "D105",
+  "D107",
+  "D200",
+  "D205",
+  "D400",
+  "FURB152",
+  "N802",
+  "N803",
+  "N806",
+  "N812",
+  "N816",
+  "PLC1901",
+  "S101",
+  "S110",
+  "TD002",
+  "TRY003",
+]
+preview = true
+
+[lint.flake8-import-conventions.banned-aliases]
+typing = ["ty", "typ"]
+
+[lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "single"
+
+[lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[lint.mccabe]
+max-complexity = 14
+
+[lint.pep8-naming]
+extend-ignore-names = [
+  "*LLM_*",
+  "*_LLM*",
+]
+
+[lint.per-file-ignores]
+"tests/*" = [
+  "D101",
+  "D102",
+  "D103",
+  "E501",
+  "FBT001",
+  "PLC2701",
+  "PLR2004",
+  "SLF001",
+]
+
+[lint.pydocstyle]
+convention = "numpy"
+
+[lint.pylint]
+max-args = 1000
+max-bool-expr = 10
+max-branches = 100
+max-locals = 1000
+max-nested-blocks = 10
+max-returns = 30
+max-statements = 50

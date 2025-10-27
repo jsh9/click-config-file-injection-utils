@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "click-config-file-injection-utils"
+version = "0.1.0"
+description = "Click callback for injecting option defaults from TOML files"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  {name = "jsh9"},
+]
+keywords = ["click", "config", "toml", "cli"]
+dependencies = [
+  "click>=8.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/jsh9/click-config-file-injection-utils"
+Repository = "https://github.com/jsh9/click-config-file-injection-utils"
+
+[tool.hatch.build.targets.wheel]
+packages = ["click_config_file_injection_utils"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
