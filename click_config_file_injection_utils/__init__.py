@@ -11,6 +11,6 @@ __version__ = metadata.version('click-config-file-injection-utils')
 
 __all__ = [
     'MissingToolSectionError',
-    'injectDefaultOptionsFromToml',
     '__version__',
+    'injectDefaultOptionsFromToml',
 ]
