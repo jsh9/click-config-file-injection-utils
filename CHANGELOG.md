@@ -1,5 +1,8 @@
 # Changelog
 
-## [0.0.1] - 2024-01-01
+## [0.1.0] - 2025-10-26
 
-- Initial scaffolding.
+- Added
+  - Initial release.
+- Full diff
+  - https://github.com/jsh9/click-config-file-injection-utils/compare/d96e2792f2ab30a96d1b7d5d2c95a355ec5c123f...0.1.0
