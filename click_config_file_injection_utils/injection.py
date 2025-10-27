@@ -29,7 +29,8 @@ def injectDefaultOptionsFromToml(
         *,
         toolSectionName: str,
 ) -> str | None:
-    """Inject Click defaults from a user-supplied TOML file path.
+    """
+    Inject Click defaults from a user-supplied TOML file path.
 
     The function is designed to be used as the callback for a ``click.Option``
     that captures the ``--config`` flag. When ``value`` is defined, the
@@ -39,8 +40,8 @@ def injectDefaultOptionsFromToml(
     other Click default: explicit CLI flags still win, while options the user
     leaves unspecified inherit the TOML value.
 
-    Example
-    -------
+    Examples
+    --------
     ::
 
         @click.command()
@@ -64,12 +65,12 @@ def injectDefaultOptionsFromToml(
     param : click.Parameter
         The "click" parameter; not used in this function; just a placeholder
     value : str | None
-        The full path of the TOML file. (It needs to be named ``value`` so
-        that ``click`` can correctly use it as a callback function.)
+        The full path of the TOML file. (It needs to be named ``value`` so that
+        ``click`` can correctly use it as a callback function.)
     toolSectionName : str
         The name of the tool section in the TOML file. For example, if your
-        tool is name "pytool", the expected TOML section should be ``[tool.pytool]``,
-        so this parameter should be set to "pytool".
+        tool is name "pytool", the expected TOML section should be
+        ``[tool.pytool]``, so this parameter should be set to "pytool".
 
     Returns
     -------
@@ -79,7 +80,8 @@ def injectDefaultOptionsFromToml(
     Raises
     ------
     click.BadParameter
-        If the path supplied doesn't exist or lacks a [tool.<toolSectionName>] section
+        If the path supplied doesn't exist or lacks a [tool.<toolSectionName>]
+        section
     """
     if not value:
         return None
@@ -125,7 +127,9 @@ def _parseOneTomlFile(
         with Path(tomlFilename).open('rb') as fp:
             rawConfig = tomllib.load(fp)
     except Exception as exc:
-        logger.info('Failed to load "%s": %s; ignoring this', tomlFilename, exc)
+        logger.info(
+            'Failed to load "%s": %s; ignoring this', tomlFilename, exc
+        )
         if enforceToolSection:
             raise
 
@@ -146,11 +150,13 @@ def _parseOneTomlFile(
         targetSection = toolSection[toolSectionName]
         if not isinstance(targetSection, dict):
             message = (
-                f'Config file "{tomlFilename}" has a non-table [tool.{toolSectionName}] section.'
+                f'Config file "{tomlFilename}" has a non-table'
+                f' [tool.{toolSectionName}] section.'
             )
             logger.info(message)
             if enforceToolSection:
                 raise MissingToolSectionError(message)
+
             finalConfig = {}
         else:
             finalConfig = {
