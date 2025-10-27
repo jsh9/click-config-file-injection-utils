@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1] - 2025-10-27
+
+- Added
+  - `py.typed` marker
+- Full diff
+  - https://github.com/jsh9/click-config-file-injection-utils/compare/0.1.0...0.1.1
+
 ## [0.1.0] - 2025-10-26
 
 - Added
