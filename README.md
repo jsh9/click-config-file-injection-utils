@@ -6,22 +6,34 @@ ______________________________________________________________________
 
 **Table of Contents**
 
-- [1. Example](#1-example)
+- [1. Introduction](#1-introduction)
+- [2. Installation Instruction](#2-installation-instruction)
+- [3. Usage](#3-usage)
 
 ______________________________________________________________________
 
 <!--TOC-->
 
+## 1. Introduction
+
 Utilities for building Click CLIs that load option defaults from user-specified
-`pyproject.toml` files. The package exposes a single callback function,
-`injectDefaultOptionsFromToml`, and the error `MissingToolSectionError`.
+TOML files. The package exposes a single callback function,
+`injectDefaultOptionsFromToml` and the exception `MissingToolSectionError`.
 
-Use the helper as the callback for a `click.Option` that captures a path such
-as `--config`. When the user points at a TOML file, the function parses the
-`[tool.<name>]` table and merges those values into `ctx.default_map`, so the
-options act as Click defaults (explicit CLI flags still override them).
+The config options in the TOML file are injected as the default config options,
+which can be overwritten by any CLI-specified configs. If users don't specify
+corresponding configs from CLI, these TOML config options will be actually
+applied to the CLI tool.
 
-## 1. Example
+## 2. Installation Instruction
+
+```bash
+pip install click-config-file-injection-utils
+```
+
+## 3. Usage
+
+Here is how you can use it with `Click`:
 
 ```python
 import click

@@ -40,24 +40,6 @@ def injectDefaultOptionsFromToml(
     other Click default: explicit CLI flags still win, while options the user
     leaves unspecified inherit the TOML value.
 
-    Examples
-    --------
-    ::
-
-        @click.command()
-        @click.option(
-            '--config',
-            callback=lambda ctx, param, value: injectDefaultOptionsFromToml(
-                ctx,
-                param,
-                value,
-                toolSectionName='mytool',
-            ),
-        )
-        @click.option('--count', default=1, show_default=True)
-        def cli(count: int, config: str | None) -> None:
-            click.echo(f'count={count}')
-
     Parameters
     ----------
     ctx : click.Context
@@ -82,6 +64,24 @@ def injectDefaultOptionsFromToml(
     click.BadParameter
         If the path supplied doesn't exist or lacks a [tool.<toolSectionName>]
         section
+
+    Examples
+    --------
+    ::
+
+        @click.command()
+        @click.option(
+            '--config',
+            callback=lambda ctx, param, value: injectDefaultOptionsFromToml(
+                ctx,
+                param,
+                value,
+                toolSectionName='mytool',
+            ),
+        )
+        @click.option('--count', default=1, show_default=True)
+        def cli(count: int, config: str | None) -> None:
+            click.echo(f'count={count}')
     """
     if not value:
         return None
